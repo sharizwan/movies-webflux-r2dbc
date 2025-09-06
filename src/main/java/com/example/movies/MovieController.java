@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,12 @@ public class MovieController {
     @PostMapping
     public Mono<Movie> addMovie(@RequestBody Movie movie) {
         return service.addMovie(movie);
+    }
+    
+    // 🔹 PUT endpoint
+    @PutMapping("/{id}")
+    public Mono<Movie> updateMovie(@PathVariable Long id, @RequestBody Movie movie) {
+        return service.updateMovie(id, movie);
     }
 }
 
